@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="mainBorderPane" prefHeight="600.0" prefWidth="800.0" style="-fx-border-radius: 10; -fx-background-color: #50514F;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddAppointment">
+   <center>
+      <VBox minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #F8FFF4;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" style="-fx-border-style: solid; -fx-border-width: 0.2; -fx-border-color: #CDCDCD; -fx-background-color: white;">
+               <children>
+                  <Label text="Appointment">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox prefHeight="503.0" prefWidth="662.0" spacing="5.0" style="-fx-border-color: #CDCDCD; -fx-border-style: solid; -fx-border-width: 0.2;">
+               <children>
+                  <Label text="Add Appointment">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="2.0" prefWidth="800.0" spacing="100.0">
+                     <children>
+                        <Label text="Title" />
+                        <Label text="Description">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin></Label>
+                        <Label text="Type">
+                           <HBox.margin>
+                              <Insets left="75.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="3.0" prefWidth="800.0" spacing="20.0">
+                     <children>
+                        <TextField fx:id="titleField" prefHeight="26.0" prefWidth="164.0" />
+                        <TextField fx:id="descriptionField" prefHeight="26.0" prefWidth="214.0" />
+                        <TextField fx:id="typeField" prefHeight="26.0" prefWidth="84.0" />
+                        <TextField fx:id="idField" disable="true" prefHeight="26.0" prefWidth="59.0" promptText="ID" visible="false" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="2.0" prefWidth="800.0">
+                     <children>
+                        <Label text="Start Date" />
+                        <Label text="Start Time (hr)">
+                           <HBox.margin>
+                              <Insets left="110.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Minutes">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Location">
+                           <HBox.margin>
+                              <Insets left="92.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="2.0" prefWidth="800.0" spacing="20.0">
+                     <children>
+                        <DatePicker fx:id="startDatePickerField" prefHeight="26.0" prefWidth="139.0" />
+                        <ComboBox fx:id="startTimeHour" prefHeight="26.0" prefWidth="86.0" />
+                        <ComboBox fx:id="startTimeMinutes" layoutX="169.0" layoutY="10.0" prefHeight="26.0" prefWidth="86.0" />
+                        <TextField fx:id="locationField" prefHeight="26.0" prefWidth="101.0">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="800.0" spacing="20.0">
+                     <children>
+                        <Label text="End Date" />
+                        <Label text="End Time (hr)">
+                           <HBox.margin>
+                              <Insets left="95.0" />
+                           </HBox.margin></Label>
+                        <Label text="Minutes">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Customer ID">
+                           <HBox.margin>
+                              <Insets left="70.0" />
+                           </HBox.margin></Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="17.0" prefWidth="750.0" spacing="20.0">
+                     <children>
+                        <DatePicker fx:id="endDatePicker" prefHeight="26.0" prefWidth="139.0" />
+                        <ComboBox fx:id="endTimeHour" prefHeight="26.0" prefWidth="86.0" />
+                        <ComboBox fx:id="endTimeMinutes" layoutX="169.0" layoutY="10.0" prefHeight="26.0" prefWidth="86.0" />
+                        <ComboBox fx:id="customerIDComboField" prefHeight="26.0" prefWidth="104.0">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="60.0" layoutY="231.0" prefHeight="0.0" prefWidth="800.0" spacing="20.0">
+                     <children>
+                        <Label text="Contact">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Label layoutX="308.0" layoutY="10.0" text="User ID">
+                           <HBox.margin>
+                              <Insets left="105.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="60.0" layoutY="253.0" prefHeight="17.0" prefWidth="750.0" spacing="20.0">
+                     <children>
+                        <ComboBox fx:id="contactComboField" prefHeight="26.0" prefWidth="117.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></ComboBox>
+                        <ComboBox fx:id="userIDField" prefHeight="26.0" prefWidth="85.0">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin></ComboBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="10.0" prefWidth="800.0" spacing="20.0">
+                     <children>
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#onCancelButton" style="-fx-cursor: hand;" text="Cancel" />
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButton" style="-fx-cursor: hand;" text="Save" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="400.0" top="30.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="50.0" top="30.0" />
+               </padding></VBox>
+         </children></VBox>
+   </center>
+</BorderPane>

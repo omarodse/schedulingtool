@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="mainBorderPane" prefHeight="600.0" prefWidth="800.0" style="-fx-border-radius: 10; -fx-background-color: #50514F;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Appointments">
+   <center>
+      <VBox minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #F8FFF4;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="100.0" prefWidth="800.0" style="-fx-border-style: solid; -fx-border-width: 0.2; -fx-border-color: #CDCDCD; -fx-background-color: white;">
+               <children>
+                  <Label text="Appointments">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="addAppointmentButton" mnemonicParsing="false" onAction="#onAddAppointmentButton" style="-fx-cursor: hand;" text="Add Appointment">
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <VBox style="-fx-border-color: #CDCDCD; -fx-border-style: solid; -fx-border-width: 0.2;" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" top="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label text="See total appointments by month and type">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label text="Month">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ComboBox fx:id="monthComboBox" prefHeight="26.0" prefWidth="66.0" style="-fx-cursor: hand;" />
+                        <Label text="Type">
+                           <HBox.margin>
+                              <Insets left="20.0" right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ComboBox fx:id="typeComboBox" prefWidth="150.0" style="-fx-cursor: hand;">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ComboBox>
+                        <Button fx:id="fetchButton" mnemonicParsing="false" onAction="#onFetchButton" style="-fx-cursor: hand;" text="Submit">
+                           <HBox.margin>
+                              <Insets left="40.0" right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="numberOfAppointments" text="0">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="BOTTOM_LEFT" prefHeight="63.0" prefWidth="699.0">
+                     <children>
+                        <Label fx:id="monthYear" contentDisplay="TOP" prefHeight="20.0" prefWidth="131.0" text="Label">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Label>
+                        <Pane prefHeight="36.0" prefWidth="489.0" HBox.hgrow="ALWAYS" />
+                        <TabPane fx:id="tabPane" focusTraversable="false" prefHeight="39.0" prefWidth="164.0" side="BOTTOM" stylesheets="@../resources/styless.css" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab fx:id="monthView" text="Month">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </Tab>
+                            <Tab fx:id="weekView" text="Week">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" top="30.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <TableView fx:id="appointmentsTable" prefWidth="800.0" style="-fx-border-style: solid; -fx-border-color: #ededed; -fx-border-width: 0.2;" stylesheets="@../resources/styless.css" VBox.vgrow="ALWAYS">
+                    <columns>
+                      <TableColumn fx:id="appointmentID" maxWidth="100.0" minWidth="30.0" prefWidth="40.0" text="ID" />
+                      <TableColumn fx:id="title" prefWidth="153.59996795654297" text="Title" />
+                        <TableColumn fx:id="description" minWidth="40.0" prefWidth="102.60003662109375" text="Description" />
+                        <TableColumn fx:id="location" minWidth="20.0" prefWidth="216.39999389648438" text="Location" />
+                        <TableColumn fx:id="contactID" prefWidth="94.0" text="Contact" />
+                        <TableColumn fx:id="type" minWidth="30.0" prefWidth="91.7999267578125" text="Type" />
+                        <TableColumn fx:id="startDate" minWidth="30.0" prefWidth="101.800048828125" text="Start Date" />
+                        <TableColumn fx:id="endDate" minWidth="30.0" prefWidth="101.800048828125" text="End Date" />
+                        <TableColumn fx:id="customerID" maxWidth="120.0" minWidth="70.0" prefWidth="101.800048828125" text="Cust. ID" />
+                        <TableColumn fx:id="userID" maxWidth="100.0" minWidth="60.0" prefWidth="101.800048828125" text="User ID" />
+                        <TableColumn fx:id="optionsButton" maxWidth="100.0" minWidth="60.0" prefWidth="70.0" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <VBox.margin>
+                        <Insets bottom="100.0" left="50.0" right="50.0" />
+                     </VBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TableView>
+               </children></VBox>
+         </children></VBox>
+   </center>
+</BorderPane>

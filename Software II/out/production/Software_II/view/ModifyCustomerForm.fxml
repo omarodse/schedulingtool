@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="mainBorderPane" prefHeight="600.0" prefWidth="800.0" style="-fx-border-radius: 10; -fx-background-color: #50514F;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyCustomer">
+   <center>
+      <VBox minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #F8FFF4;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" style="-fx-border-style: solid; -fx-border-width: 0.2; -fx-border-color: #CDCDCD; -fx-background-color: white;">
+               <children>
+                  <Label text="Customer">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox prefHeight="503.0" prefWidth="662.0" spacing="5.0" style="-fx-border-color: #CDCDCD; -fx-border-style: solid; -fx-border-width: 0.2;">
+               <children>
+                  <Label text="Edit Customer">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="2.0" prefWidth="800.0" spacing="195.0">
+                     <children>
+                        <Label text="Full Name" />
+                        <Label text="Phone" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="3.0" prefWidth="800.0" spacing="20.0">
+                     <children>
+                        <TextField fx:id="nameField" prefHeight="26.0" prefWidth="225.0" />
+                        <TextField fx:id="phoneField" />
+                        <TextField fx:id="customerID" disable="true" editable="false" prefHeight="26.0" prefWidth="47.0" promptText="ID" visible="false" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="2.0" prefWidth="800.0" spacing="206.0">
+                     <children>
+                        <Label text="Address" />
+                        <Label text="Zip Code" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="2.0" prefWidth="800.0" spacing="20.0">
+                     <children>
+                        <TextField fx:id="addressField" prefHeight="26.0" prefWidth="225.0" />
+                        <TextField fx:id="zipCodeField" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="800.0" spacing="206.0">
+                     <children>
+                        <Label text="Country" />
+                        <Label text="State/Province" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="17.0" prefWidth="750.0" spacing="95.0">
+                     <children>
+                        <ComboBox fx:id="countryCombo" onAction="#onCountryCombo" prefWidth="150.0" />
+                        <ComboBox fx:id="divisionCombo" prefWidth="150.0" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="divisionError" text="Incorrect for the selected country" textFill="RED" visible="false">
+                     <VBox.margin>
+                        <Insets left="250.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="10.0" prefWidth="800.0" spacing="20.0">
+                     <children>
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#onCancelButton" text="Cancel" />
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButton" text="Save" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="283.0" top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="50.0" top="30.0" />
+               </padding></VBox>
+         </children></VBox>
+   </center>
+</BorderPane>
