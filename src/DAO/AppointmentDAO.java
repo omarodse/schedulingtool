@@ -322,11 +322,6 @@ public class AppointmentDAO {
                 ZonedDateTime startUserTime = startUTC.atZone(ZoneId.of("UTC")).withZoneSameInstant(userTimeZone);
 
                 upcomingAppointment = new Appointment(appointmentId, startUserTime.toLocalDateTime());
-                if (upcomingAppointment != null) {
-                    System.out.println("Is not NULL from DB");
-                } else {
-                    System.out.println("Is NULL from DB");
-                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -483,5 +478,30 @@ public class AppointmentDAO {
             e.printStackTrace();
         }
         return count;
+    }
+
+    /**
+     * Deletes all appointments associated with a given customer from the database.
+     *
+     * @param customerID The ID of the customer whose appointments are to be deleted.
+     * @throws SQLException If a database access error occurs or the delete operation fails.
+     */
+    public static void deleteAllAppointmentsForCustomer(int customerID) throws SQLException {
+        String query = "DELETE FROM appointments WHERE Customer_ID = ?;";
+
+        try{
+            PreparedStatement ps = getConnection().prepareStatement(query);
+            ps.setInt(1, customerID);
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows > 0) {
+                System.out.println("Deleted " + affectedRows + " appointments for customer ID " + customerID);
+            } else {
+                System.out.println("No appointments found for customer ID " + customerID);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error deleting appointments for customer ID " + customerID);
+            e.printStackTrace();
+            throw e;
+        }
     }
 }

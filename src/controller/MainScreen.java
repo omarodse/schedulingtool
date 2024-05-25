@@ -9,7 +9,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import model.Appointment;
 import model.Contact;
-import model.Customer;
 
 import java.net.URL;
 import java.time.LocalDateTime;

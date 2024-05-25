@@ -14,8 +14,10 @@ import javafx.util.Callback;
 import model.Customer;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import static DAO.AppointmentDAO.deleteAllAppointmentsForCustomer;
 import static DAO.CustomerDAO.deleteCustomerFromDB;
 import static DAO.CustomerDAO.getAllCustomers;
 import static utilities.ManageState.*;
@@ -133,7 +135,13 @@ public class Customers implements Initializable {
         contextMenu.getItems().addAll(editItem, deleteItem);
 
         editItem.setOnAction(e -> editCustomer(customer));
-        deleteItem.setOnAction(e -> deleteCustomer(customer));
+        deleteItem.setOnAction(e -> {
+            try {
+                deleteCustomer(customer);
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
         contextMenu.show(button, Side.BOTTOM, 0, 0);
     }
@@ -157,20 +165,23 @@ public class Customers implements Initializable {
      *
      * @param customer The customer to be deleted.
      */
-    private void deleteCustomer(Customer customer) {
-        String name = customer.getCustomerName();
-        System.out.println("Deleting: " + name);
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete " + name + "?", ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
+    private void deleteCustomer(Customer customer) throws SQLException {
+        if(customer != null) {
+            String name = customer.getCustomerName();
+            System.out.println("Deleting: " + name);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete " + name + "?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
 
-        if (alert.getResult() == ButtonType.YES) {
-            deleteCustomerFromDB(customer.getCustomerID());
-            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-            successAlert.setTitle("Deletion Successful");
-            successAlert.setHeaderText(null);
-            successAlert.setContentText("The customer '" + name + "' was successfully deleted.");
-            successAlert.showAndWait();
-            mainBorderPane.setCenter(loadView("/view/Customers.fxml", rb));
+            if (alert.getResult() == ButtonType.YES) {
+                deleteAllAppointmentsForCustomer(customer.getCustomerID());
+                deleteCustomerFromDB(customer.getCustomerID());
+                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                successAlert.setTitle("Deletion Successful");
+                successAlert.setHeaderText(null);
+                successAlert.setContentText("The customer '" + name + "' and related appointments were successfully deleted.");
+                successAlert.showAndWait();
+                mainBorderPane.setCenter(loadView("/view/Customers.fxml", rb));
+            }
         }
     }
 
