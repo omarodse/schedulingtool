@@ -47,7 +47,7 @@ public class ModifyAppointment implements Initializable, InitializableWithData {
     public Button saveButton;
     private Appointment appointment;
     private ResourceBundle rb = getRB();
-    @Override
+
 
     /**
      * Initializes the controller by setting up UI components specific to appointment management.
@@ -60,6 +60,7 @@ public class ModifyAppointment implements Initializable, InitializableWithData {
      * @param url The location used to resolve relative paths for the root object, or {@code null} if the location is not known.
      * @param resourceBundle The resources used to localize the root object, providing localized strings for UI components.
      */
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Setup date pickers to use specific date formats or constraints
         configureDatePickers();
@@ -92,7 +93,6 @@ public class ModifyAppointment implements Initializable, InitializableWithData {
         userIDField.setItems(getAllUserIDs());
         customerIDComboField.setItems(getAllCustomerIDs());
     }
-
 
     /**
      * Initializes the controller with specific appointment data for editing. This method is called to populate the form
@@ -147,7 +147,6 @@ public class ModifyAppointment implements Initializable, InitializableWithData {
         mainBorderPane.setCenter(loadView("/view/Appointments.fxml", rb));
     }
 
-
     /**
      * Handles the action triggered by clicking the 'Save' button. This method validates the form fields
      * and updates the appointment data if validation is successful. It also handles conversion of date
@@ -191,8 +190,6 @@ public class ModifyAppointment implements Initializable, InitializableWithData {
         if (validateAppointment(startZonedDateTime, endZonedDateTime, defaultZoneId, customerID, appointmentId)) {
             editAppointment(title, description, location, type, startZonedDateTime, endZonedDateTime, customerID, userID, contactID, appointmentId);
             mainBorderPane.setCenter(loadView("/view/Appointments.fxml", rb));
-        } else {
-            // Optionally handle validation failure
         }
     }
 

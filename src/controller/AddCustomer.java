@@ -11,8 +11,6 @@ import model.Country;
 import model.Division;
 
 import java.net.URL;
-import java.sql.SQLException;
-import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 import static DAO.CountryDAO.getAllCountries;
@@ -31,6 +29,7 @@ public class AddCustomer implements Initializable {
     public Button cancelButton;
     public ComboBox<Country> countryCombo;
     public ComboBox<Division> divisionCombo;
+
     public Button saveButton;
     public TextField nameField;
     public TextField phoneField;

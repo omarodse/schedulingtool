@@ -51,7 +51,7 @@ public class Main extends Application {
             return;
         }
 
-        Scene scene = new Scene((Parent) root, 800, 600);
+        Scene scene = new Scene((Parent) root, 1024, 768);
         primaryStage.setTitle(resourceBundle.getString("window.title"));
         primaryStage.setScene(scene);
         primaryStage.show();

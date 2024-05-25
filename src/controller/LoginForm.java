@@ -33,15 +33,6 @@ public class LoginForm implements Initializable {
     public Button loginButton;
     public Label loginError;
 
-    /**
-     * Initializes the controller class.
-     * <p>
-     * This method is automatically called after the FXML file has been loaded. It can be used
-     * to perform initializations such as setting event handlers or configuring UI controls.
-     *
-     * @param url The location used to resolve relative paths for the root object, or {@code null} if unknown.
-     * @param rb The resources used to localize the root object, or {@code null} if not localized.
-     */
     @Override
     /**
      * Initializes the login form controller. This method sets up the UI components with default values
@@ -90,7 +81,6 @@ public class LoginForm implements Initializable {
                     throw new IllegalStateException("The scene is null.");
                 }
 
-                // Pass appointment data to the main scene if necessary
                 MainScreen controller = (MainScreen) scene.getUserData();
                 if (controller != null && upcomingAppointment != null) {
                     controller.displayUpcomingAppointment(upcomingAppointment);
@@ -106,7 +96,7 @@ public class LoginForm implements Initializable {
         } catch (SQLException | IOException e) {
             loginError.setText("Login failed due to an error. Please contact support.");
             loginError.setVisible(true);
-            e.printStackTrace();  // Log the exception for debugging purposes
+            e.printStackTrace();
         }
     }
 

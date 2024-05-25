@@ -38,7 +38,9 @@ public class AddAppointment implements Initializable {
     public DatePicker endDatePicker;
     public ComboBox customerIDComboField;
     public ComboBox userIDField;
+
     public Button cancelButton;
+
     public Button saveButton;
     public ComboBox<String> startTimeHour;
     public ComboBox<String> startTimeMinutes;
@@ -56,14 +58,14 @@ public class AddAppointment implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         configureDatePickers();
 
-        startTimeHour.getItems().addAll(IntStream.rangeClosed(0, 23).mapToObj(i -> String.format("%02d", i)).collect(Collectors.toList()));
-        startTimeMinutes.getItems().addAll(IntStream.rangeClosed(0, 59).mapToObj(i -> String.format("%02d", i)).collect(Collectors.toList()));
+        startTimeHour.getItems().addAll(IntStream.rangeClosed(0, 23).mapToObj(i -> String.format("%02d", i)).toList());
+        startTimeMinutes.getItems().addAll(IntStream.rangeClosed(0, 59).mapToObj(i -> String.format("%02d", i)).toList());
 
         startTimeHour.setValue("12");
         startTimeMinutes.setValue("00");
 
-        endTimeHour.getItems().addAll(IntStream.rangeClosed(0, 23).mapToObj(i -> String.format("%02d", i)).collect(Collectors.toList()));
-        endTimeMinutes.getItems().addAll(IntStream.rangeClosed(0, 59).mapToObj(i -> String.format("%02d", i)).collect(Collectors.toList()));
+        endTimeHour.getItems().addAll(IntStream.rangeClosed(0, 23).mapToObj(i -> String.format("%02d", i)).toList());
+        endTimeMinutes.getItems().addAll(IntStream.rangeClosed(0, 59).mapToObj(i -> String.format("%02d", i)).toList());
 
         endTimeHour.setValue("12");
         endTimeMinutes.setValue("00");
@@ -118,8 +120,6 @@ public class AddAppointment implements Initializable {
         if (validateAppointment(startZonedDateTime, endZonedDateTime, defaultZoneId, customerID)) {
             createAppointment(title, description, location, type, startZonedDateTime, endZonedDateTime, customerID, userID, contact.getContactID());
             mainBorderPane.setCenter(loadView("/view/Appointments.fxml", rb));
-        } else {
-            // Optionally handle validation failure
         }
     }
 

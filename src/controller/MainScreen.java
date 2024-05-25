@@ -52,10 +52,6 @@ public class MainScreen implements Initializable, InitializableWithData {
     public TableColumn customerID;
     public TableView<Appointment> appointmentsPerContact;
     public Label appointmentsTomorrow;
-
-    private Contact contact;
-
-    private Customer customer;
     private ResourceBundle rb = getRB();
 
     /**

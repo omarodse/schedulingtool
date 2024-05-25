@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Appointment;
@@ -19,7 +18,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import static DAO.AppointmentDAO.getAllAppointments;
 import static DAO.AppointmentDAO.getAllAppointmentsForCustomer;
 
 public class ManageState {
@@ -36,14 +34,9 @@ public class ManageState {
         primaryStage = stage;
     }
 
-    public static Stage getPrimaryStage() {
-        return primaryStage;
-    }
-
     public static ResourceBundle getRB() {
         return resourceBundle;
     }
-
     public static void switchScene(String title, Scene scene) {
         if (primaryStage == null) {
             throw new IllegalStateException("Primary Stage is not initialized.");
@@ -76,7 +69,6 @@ public class ManageState {
             return loader.load();
         } catch (IOException e) {
             e.printStackTrace();
-            // Handle the exception appropriately - maybe log it and/or return an error message to the UI
             return null;
         }
     }
@@ -114,6 +106,12 @@ public class ManageState {
 
     public static boolean validateAppointment(ZonedDateTime startTime, ZonedDateTime endTime, ZoneId userTimeZone, int customerID) {
 
+        // Check if the selected time is in the past
+        ZonedDateTime now = ZonedDateTime.now(userTimeZone);
+        if (startTime.isBefore(now)) {
+            showAlert("Invalid Date/Time", "Cannot schedule appointments in the past.");
+            return false;
+        }
         // Check if the end time is before the start time
         if (endTime.isBefore(startTime)) {
             showAlert("Invalid Date/Time", "End time cannot be before start time.");

@@ -55,7 +55,6 @@ public class Appointments implements Initializable {
     public ComboBox<String> typeComboBox;
     public Button fetchButton;
     public Label numberOfAppointments;
-    private MainScreen mainScreen;
     @FXML
     private BorderPane mainBorderPane = getMainBorderPane();
     private final ResourceBundle rb = getRB();
