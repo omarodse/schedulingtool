@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static DAO.AppointmentDAO.editAppointment;
+import static DAO.ContactDAO.getAllContactIDs;
 import static DAO.ContactDAO.getAllContacts;
 import static DAO.CustomerDAO.getAllCustomerIDs;
 import static DAO.UserDAO.getAllUserIDs;
@@ -69,27 +70,27 @@ public class ModifyAppointment implements Initializable, InitializableWithData {
         startTimeHour.getItems().addAll(
                 IntStream.rangeClosed(0, 23)
                         .mapToObj(i -> String.format("%02d", i))
-                        .collect(Collectors.toList())
+                        .toList()
         );
         startTimeMinutes.getItems().addAll(
                 IntStream.rangeClosed(0, 59)
                         .mapToObj(i -> String.format("%02d", i))
-                        .collect(Collectors.toList())
+                        .toList()
         );
 
         endTimeHour.getItems().addAll(
                 IntStream.rangeClosed(0, 23)
                         .mapToObj(i -> String.format("%02d", i))
-                        .collect(Collectors.toList())
+                        .toList()
         );
         endTimeMinutes.getItems().addAll(
                 IntStream.rangeClosed(0, 59)
                         .mapToObj(i -> String.format("%02d", i))
-                        .collect(Collectors.toList())
+                        .toList()
         );
 
         // Load dynamic data into combo boxes for contacts, user IDs, and customer IDs
-        contactComboField.setItems(getAllContacts());
+        contactComboField.setItems(getAllContactIDs());
         userIDField.setItems(getAllUserIDs());
         customerIDComboField.setItems(getAllCustomerIDs());
     }

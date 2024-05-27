@@ -47,4 +47,32 @@ public class ContactDAO {
         }
         return contactList;
     }
+
+    /**
+     * Retrieves all contact IDs from the database and returns them as an ObservableList.
+     * This method fetches the contact IDs for each contact in the database and encapsulates
+     * them into Contact objects which are then collected into an ObservableList.
+     *
+     * @return an ObservableList of contact IDs containing all contact IDs from the database.
+     *         If an SQL exception occurs, the method prints the stack trace and returns an empty list.
+     */
+    public static ObservableList<Integer> getAllContactIDs() {
+        ObservableList<Integer> contactIDList = FXCollections.observableArrayList();
+
+        try{
+            String query = "SELECT Contact_ID FROM contacts";
+
+            PreparedStatement ps = getConnection().prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                int contactID = rs.getInt("Contact_ID");
+                contactIDList.add(contactID);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return contactIDList;
+    }
 }

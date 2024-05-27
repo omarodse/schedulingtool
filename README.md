@@ -5,7 +5,7 @@ This application is a GUI-based scheduling tool designed for a global consulting
 
 ## Author
 - **Name:** Omar Rodriguez
-- **Contact:** omarcarpi@gmail.com
+- **Contact:** orodr85@wgu.edu
 - **Version:** 1.0
 - **Date:** TBD
 

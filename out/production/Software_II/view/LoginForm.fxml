@@ -24,7 +24,7 @@
                <Font name="Arial Bold" size="18.0" />
             </font>
          </Button>
-         <Label fx:id="loginError" alignment="CENTER" maxWidth="300.0" text="Incorrect username or password" textFill="RED" visible="false">
+         <Label fx:id="loginError" alignment="CENTER" text="Incorrect username or password" textFill="RED" visible="false" VBox.vgrow="ALWAYS">
             <font>
                <Font size="14.0" />
             </font>

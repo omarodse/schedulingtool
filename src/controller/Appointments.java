@@ -43,6 +43,7 @@ public class Appointments implements Initializable {
     public TableColumn<Appointment, LocalDateTime> endDate;
 
     public TableColumn customerID;
+
     public TableColumn userID;
     public TableView<Appointment> appointmentsTable;
     public TableColumn optionsButton;
@@ -152,8 +153,11 @@ public class Appointments implements Initializable {
     private void updateTableView(LocalDate referenceDate) {
         if (tabPane.getSelectionModel().getSelectedItem() == weekView) {
             loadWeekData(referenceDate);
+            monthView.setStyle("-fx-cursor: hand;");
+
         } else if (tabPane.getSelectionModel().getSelectedItem() == monthView) {
             loadMonthData(referenceDate);
+            weekView.setStyle("-fx-cursor: hand;");
         }
     }
 

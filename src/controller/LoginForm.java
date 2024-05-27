@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 
 import static DAO.AppointmentDAO.getUpcomingAppointmentForUser;
 import static DAO.UserDAO.userAccess;
+import static utilities.ManageState.getRB;
 
 /**
  * Controller for the Login Form UI.
@@ -32,6 +33,7 @@ public class LoginForm implements Initializable {
     public PasswordField passwordField;
     public Button loginButton;
     public Label loginError;
+    private ResourceBundle rb = getRB();
 
     @Override
     /**
@@ -44,13 +46,13 @@ public class LoginForm implements Initializable {
      */
     public void initialize(URL url, ResourceBundle rb) {
         ZoneId zoneId = ZoneId.systemDefault();
+        System.out.println(zoneId);
         locationLabel.setText(String.valueOf(zoneId));
 
         signInText.setText(rb.getString("sign_in"));
         emailField.setPromptText(rb.getString("email_prompt"));
         passwordField.setPromptText(rb.getString("password_prompt"));
         loginButton.setText(rb.getString("log_in"));
-        loginError.setText(rb.getString("login_error"));
     }
 
     /**
@@ -90,11 +92,11 @@ public class LoginForm implements Initializable {
 
                 ManageState.switchScene("Calendar", scene);
             } else {
-                loginError.setText("Invalid username or password. Please try again.");
+                loginError.setText(rb.getString("login_error"));
                 loginError.setVisible(true);
             }
         } catch (SQLException | IOException e) {
-            loginError.setText("Login failed due to an error. Please contact support.");
+            loginError.setText("Error");
             loginError.setVisible(true);
             e.printStackTrace();
         }

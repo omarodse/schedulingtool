@@ -92,15 +92,15 @@
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <Pane prefHeight="36.0" prefWidth="489.0" HBox.hgrow="ALWAYS" />
-                        <TabPane fx:id="tabPane" focusTraversable="false" prefHeight="39.0" prefWidth="164.0" side="BOTTOM" stylesheets="@../resources/styless.css" tabClosingPolicy="UNAVAILABLE">
+                        <Pane prefHeight="30.0" prefWidth="345.0" HBox.hgrow="ALWAYS" />
+                        <TabPane fx:id="tabPane" focusTraversable="false" prefHeight="30.0" prefWidth="199.0" side="BOTTOM" stylesheets="@../resources/styless.css" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
                           <tabs>
-                            <Tab fx:id="monthView" text="Month">
+                            <Tab fx:id="monthView" style="-fx-cursor: hand;" text="This Month">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
                             </Tab>
-                            <Tab fx:id="weekView" text="Week">
+                            <Tab fx:id="weekView" style="-fx-cursor: hand;" text="This Week">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
