@@ -21,7 +21,6 @@ import static utilities.ManageState.*;
 
 /**
  * Controller for the Add Customer form of the application.
- * <p>
  * This class is responsible for handling all user interactions on the Add Customer form,
  * including initializing the distinct Combo Boxes, and validating the information.
  */
@@ -41,7 +40,6 @@ public class AddCustomer implements Initializable {
 
     /**
      * Initializes the controller, setting up the Combo Boxes.
-     *
      * @param url The location used to resolve relative paths for the root object, or null if unknown.
      * @param resourceBundle The resources used to localize the root object, or null if not localized.
      */
@@ -64,7 +62,6 @@ public class AddCustomer implements Initializable {
     /**
      * Handles the click event of the combo box for countries, and it populates the correspondent
      * divisions(cities/provinces) per country.
-     * <p>
      * @param actionEvent The event triggered when the country combo box is clicked.
      */
     public void onCountryCombo(ActionEvent actionEvent) {
@@ -76,7 +73,6 @@ public class AddCustomer implements Initializable {
 
     /**
      * Handles saving a new Customer.
-     * <p>
      * Validates user input and creates a new Customer. Displays confirmation or error messages as appropriate.
      * @param actionEvent The event triggered when the save button is pressed.
      */
@@ -102,7 +98,6 @@ public class AddCustomer implements Initializable {
 
     /**
      * Handles validation for all fields.
-     * <p>
      * Validates user input. Displays confirmation or error messages as appropriate.
      * @return true if the values are valid, false otherwise.
      */

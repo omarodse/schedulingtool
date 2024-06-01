@@ -9,7 +9,6 @@ import model.Contact;
 import java.net.URL;
 import java.time.*;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static DAO.AppointmentDAO.createAppointment;
@@ -20,7 +19,6 @@ import static utilities.ManageState.*;
 
 /**
  * Controller for the Add Appointment form of the application.
- * <p>
  * This class is responsible for handling all user interactions on the Add Appointment form,
  * including initializing the distinct Combo Boxes, updating date pickers,
  * and validating the information.
@@ -50,7 +48,6 @@ public class AddAppointment implements Initializable {
 
     /**
      * Initializes the controller, setting up the Date Pickers and Combo Boxes.
-     *
      * @param url The location used to resolve relative paths for the root object, or null if unknown.
      * @param resourceBundle The resources used to localize the root object, or null if not localized.
      */
@@ -77,7 +74,6 @@ public class AddAppointment implements Initializable {
 
     /**
      * Handles cancelling the creation of a new appointment and navigates back to the appointment list.
-     * <p>
      * @param actionEvent The event triggered when the save button is pressed.
      */
     public void onCancelButton(ActionEvent actionEvent) {
@@ -86,7 +82,6 @@ public class AddAppointment implements Initializable {
 
     /**
      * Handles saving a new appointment.
-     * <p>
      * Validates user input and creates a new appointment. Displays confirmation or error messages as appropriate.
      * @param actionEvent The event triggered when the save button is pressed.
      */
@@ -114,6 +109,7 @@ public class AddAppointment implements Initializable {
         LocalTime endTime = LocalTime.of(Integer.parseInt(endHour), Integer.parseInt(endMinute));
 
         ZoneId defaultZoneId = ZoneId.systemDefault();
+
         ZonedDateTime startZonedDateTime = LocalDateTime.of(start, startTime).atZone(defaultZoneId).withZoneSameInstant(ZoneId.of("UTC"));
         ZonedDateTime endZonedDateTime = LocalDateTime.of(end, endTime).atZone(defaultZoneId).withZoneSameInstant(ZoneId.of("UTC"));
 
@@ -125,7 +121,6 @@ public class AddAppointment implements Initializable {
 
     /**
      * Handles validation for all fields.
-     * <p>
      * Validates user input. Displays confirmation or error messages as appropriate.
      * @return true if the values are valid, false otherwise.
      */
@@ -159,7 +154,6 @@ public class AddAppointment implements Initializable {
 
     /**
      * Handles how the cells appear on the date pickers.
-     * <p>
      * The lambda expression '{ picker -> new DateCell() {...} }' makes it clear that the customization
      * of the cell is the primary purpose, without the overhead of a more verbose anonymous class.
      * 'valueProperty().addListener(...)' is a concise way to update related UI components based on changes in state.

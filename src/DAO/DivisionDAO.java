@@ -22,7 +22,6 @@ public class DivisionDAO {
      * Retrieves all divisions from the database. This method queries the database
      * for all records in the first_level_divisions table, constructs Division objects
      * for each record, and returns them in an ObservableList.
-     *
      * @return An ObservableList containing Division objects for all divisions found
      * in the database.
      */
@@ -54,7 +53,6 @@ public class DivisionDAO {
      * Fetches divisions based on the country specified. This method allows filtering of
      * divisions within a specific country, useful for contextual user interfaces where
      * divisions need to be displayed according to the selected country.
-     *
      * @param country The country for which divisions are to be fetched.
      * @return An ObservableList containing Division objects that belong to the specified
      * country.

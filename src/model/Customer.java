@@ -15,7 +15,6 @@ public class Customer {
 
     /**
      * Constructs a new Customer instance with specified details.
-     *
      * @param customerID The unique identifier of the customer.
      * @param customerName The name of the customer.
      * @param address The address of the customer.
@@ -34,7 +33,6 @@ public class Customer {
 
     /**
      * Returns the unique identifier of this customer.
-     *
      * @return the customer ID.
      */
     public int getCustomerID() {
@@ -43,7 +41,6 @@ public class Customer {
 
     /**
      * Returns the name of this customer.
-     *
      * @return the customer's name.
      */
     public String getCustomerName() {
@@ -52,7 +49,6 @@ public class Customer {
 
     /**
      * Returns the address of this customer.
-     *
      * @return the customer's address.
      */
     public String getAddress() {
@@ -61,7 +57,6 @@ public class Customer {
 
     /**
      * Returns the postal code of this customer's address.
-     *
      * @return the postal code.
      */
     public String getPostalCode() {
@@ -70,7 +65,6 @@ public class Customer {
 
     /**
      * Returns the phone number of this customer.
-     *
      * @return the customer's phone number.
      */
     public String getPhone() {
@@ -79,7 +73,6 @@ public class Customer {
 
     /**
      * Returns the division or region of this customer.
-     *
      * @return the division.
      */
     public String getDivision() {

@@ -22,7 +22,6 @@ public class Appointment {
 
     /**
      * Constructs a fully specified appointment with all details.
-     *
      * @param appointmentID Unique identifier for the appointment.
      * @param title Title or subject of the appointment.
      * @param description Detailed description of the appointment.
@@ -50,7 +49,6 @@ public class Appointment {
     /**
      * Constructs an appointment with reduced details, typically used when only key aspects
      * of the appointment are required.
-     *
      * @param appointmentID Unique identifier for the appointment.
      * @param title Title or subject of the appointment.
      * @param description Detailed description of the appointment.
@@ -72,7 +70,6 @@ public class Appointment {
     /**
      * Constructs an appointment focusing solely on its timing, typically used in scenarios
      * where only the timing is relevant.
-     *
      * @param appointmentID Unique identifier for the appointment.
      * @param startDate Start date and time of the appointment.
      */

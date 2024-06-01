@@ -54,7 +54,6 @@ public class Customers implements Initializable {
      * customersTable to display data retrieved from the database, setting up column bindings and
      * loading all customers into the table. It also configures a custom options column for additional
      * actions like editing or deleting customers.
-     *
      * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
      * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
      * Initializes table columns with specific property values from the Customer model, ensuring each column
@@ -124,7 +123,6 @@ public class Customers implements Initializable {
     /**
      * Displays a context menu for editing or deleting the specified customer.
      * The menu is triggered from a button within the customer table and provides the options "Edit" and "Delete".
-     *
      * @param customer The customer instance associated with the selected row in the table.
      * @param button The button used to trigger the context menu, ensuring it appears adjacent to the button.
      */
@@ -149,7 +147,6 @@ public class Customers implements Initializable {
     /**
      * Initiates the process of editing the given customer's details.
      * This method displays the customer editing form in the central pane of the main application window.
-     *
      * @param customer The customer to be edited.
      */
     private void editCustomer(Customer customer) {
@@ -162,7 +159,6 @@ public class Customers implements Initializable {
      * Initiates the deletion of the specified customer after confirmation.
      * An alert dialog asks for confirmation, and if confirmed, the customer is deleted from the database,
      * and the customer view is refreshed.
-     *
      * @param customer The customer to be deleted.
      */
     private void deleteCustomer(Customer customer) throws SQLException {
@@ -188,7 +184,6 @@ public class Customers implements Initializable {
     /**
      * Handles the action triggered by the 'Add Customer' button.
      * This method loads the customer addition form into the central pane of the main application window.
-     *
      * @param actionEvent The event triggered by the button click.
      */
     public void onAddCustomer(ActionEvent actionEvent) {

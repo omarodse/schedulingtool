@@ -210,17 +210,6 @@ public class ManageState {
         return false;  // No overlap
     }
 
-    public static String formatToLocalDateTimeString(LocalDateTime utcDateTime) {
-        ZonedDateTime zonedUtcDateTime = utcDateTime.atZone(ZoneId.of("UTC"));
-        ZonedDateTime localDateTime = zonedUtcDateTime.withZoneSameInstant(ZoneId.systemDefault());
-        return localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-    }
-    public static LocalDateTime convertToLocalDateTimeFromUserInput(LocalDate date, LocalTime time) {
-        ZonedDateTime userZonedDateTime = LocalDateTime.of(date, time).atZone(ZoneId.systemDefault());
-        ZonedDateTime utcDateTime = userZonedDateTime.withZoneSameInstant(ZoneId.of("UTC"));
-        return utcDateTime.toLocalDateTime();
-    }
-
     public static void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);

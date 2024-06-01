@@ -25,7 +25,6 @@ import static utilities.ManageState.loadView;
 
 /**
  * Controller for the Overview GUI of the application.
- * <p>
  * This class is responsible for handling all user interactions on the Overview GUI,
  * including initializing all the dynamic information shown on this view.
  */
@@ -58,11 +57,9 @@ public class Overview implements Initializable, InitializableWithData {
      * This includes populating combo boxes with contacts, displaying the count of tomorrow's appointments,
      * attempting to fetch and display an upcoming appointment for the user, and configuring table views for displaying
      * appointments.
-     *
      * The method handles data fetching operations, configures cell factories for table columns to format date and time
      * data appropriately, and sets up PropertyValueFactory for various table columns to bind them to the respective
      * properties of Appointment objects.
-     *
      * @param url The location used to resolve relative paths for the root object, or {@code null} if the location is not known.
      * @param resourceBundle The resources used to localize the root object, typically containing localized strings.
      * @throws RuntimeException if there is an SQLException during fetching the upcoming appointment, encapsulating
@@ -142,7 +139,6 @@ public class Overview implements Initializable, InitializableWithData {
     /**
      * Initializes the controller with dynamic data when required. This method allows for the flexible
      * initialization of the controller's state based on data passed at runtime.
-     *
      * @param data The data object used for initialization, which can vary depending on the specific use case.
      */
     @Override
@@ -154,7 +150,6 @@ public class Overview implements Initializable, InitializableWithData {
      * Displays details about an upcoming appointment on the main screen if an appointment is provided.
      * This method updates the `nextAppointment` label with the appointment's ID and start date, formatting the text
      * for easy reading. If no appointment is provided, it does nothing, leaving the previous content (if any) unchanged.
-     *
      * @param appointment The appointment to display. If null, no changes are made to the display.
      */
     public void displayUpcomingAppointment(Appointment appointment) {
@@ -172,7 +167,6 @@ public class Overview implements Initializable, InitializableWithData {
      * Handles the action triggered by clicking the 'Customers' button. This method changes the visual styling of the
      * navigation buttons to indicate the current active section and loads the 'Customers' view into the center of the
      * main border pane.
-     *
      * @param actionEvent The event that triggered this action.
      */
     public void onCustomers(ActionEvent actionEvent) {
@@ -187,7 +181,6 @@ public class Overview implements Initializable, InitializableWithData {
 
     /**
      * Handles the action triggered by clicking the 'Overview' button. Updates UI styling and loads the 'Overview' view.
-     *
      * @param actionEvent The event that triggered this action.
      */
     public void onOverview(ActionEvent actionEvent) {
@@ -203,7 +196,6 @@ public class Overview implements Initializable, InitializableWithData {
     /**
      * Activates when the 'Appointments' button is clicked. It updates the UI to reflect the current section and loads
      * the 'Appointments' view into the main display area.
-     *
      * @param actionEvent The event that triggered this action.
      */
     public void onAppointments(ActionEvent actionEvent) {
@@ -220,7 +212,6 @@ public class Overview implements Initializable, InitializableWithData {
     /**
      * Handles the selection action on the contact combo box. This method updates the appointments table
      * to display appointments associated with the selected contact.
-     *
      * @param actionEvent The event that triggered this action, such as selecting an item from the combo box.
      */
     public void onContactCombo(ActionEvent actionEvent) {
@@ -236,7 +227,6 @@ public class Overview implements Initializable, InitializableWithData {
     /**
      * Handles the click event on the 'Add' button. This method sets the center of the main border pane
      * to the form for adding a new appointment.
-     *
      * @param mouseEvent The mouse event that triggered this action.
      */
     public void onAddButton(MouseEvent mouseEvent) {

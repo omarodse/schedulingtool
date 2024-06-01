@@ -6,27 +6,22 @@ import model.Appointment;
 import model.Contact;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 
 import static utilities.DBConnection.getConnection;
 
 /**
  * Handles all database operations related to appointments. This class is responsible for creating, updating,
  * deleting, and fetching appointment data from the database. It provides methods to:
- *
  * - Retrieve all appointments or specific subsets based on various criteria such as customer or contact.
  * - Add new appointments to the database with detailed information including start and end times, descriptions, and associated user and customer details.
  * - Update existing appointment records when changes are made.
  * - Delete appointments from the database.
  * - Count appointments based on type and time criteria, useful for reporting and analytics.
  * - Fetch unique appointment types for dynamic filtering or categorization within the application.
- *
  * Each method ensures data integrity and handles SQL exceptions to maintain robustness of the application's data access layer.
  */
 public class AppointmentDAO {
@@ -34,7 +29,6 @@ public class AppointmentDAO {
     /**
      * Retrieves all appointments from the database, joining with customer and contact tables to enrich the appointment data.
      * Orders the appointments by creation date.
-     *
      * @return an ObservableList of all appointments in the database.
      * @throws SQLException if there is a problem executing the query.
      */
@@ -58,11 +52,13 @@ public class AppointmentDAO {
                 String location = rs.getString("Location");
                 String type = rs.getString("Type");
                 LocalDateTime startDate = rs.getTimestamp("Start") != null ? rs.getTimestamp("Start").toLocalDateTime() : null;
+                System.out.println("From getAllAppointments() = " + startDate);
+                System.out.println("Timestamp = " + rs.getTimestamp("Start"));
+                System.out.println("From getAllAppointments() = " + title);
                 LocalDateTime endDate = rs.getTimestamp("End") != null ? rs.getTimestamp("End").toLocalDateTime() : null;
                 int customerID = rs.getInt("Customer_ID");
                 int userID = rs.getInt("User_ID");
                 int contactID = rs.getInt("Contact_ID");
-
 
                 Appointment appointment = new Appointment(appointmentID, title, description, location, type, startDate, endDate, customerID, userID, contactID);
                 appointmentList.add(appointment);
@@ -77,7 +73,6 @@ public class AppointmentDAO {
     /**
      * Fetches all appointments for a specific customer from the database.
      * Filters appointments based on the provided customer ID.
-     *
      * @param Customer_ID The ID of the customer for whom appointments are to be retrieved.
      * @return an ObservableList of Appointment objects specific to the given customer.
      * @throws SQLException if there is a problem executing the query.
@@ -110,6 +105,7 @@ public class AppointmentDAO {
                 int userID = rs.getInt("User_ID");
                 int contactID = rs.getInt("Contact_ID");
 
+                System.out.println("startDate from get allAppointments method = " + startDate);
 
                 Appointment appointment = new Appointment(appointmentID, title, description, location, type, startDate, endDate, customerID, userID, contactID);
                 appointmentList.add(appointment);
@@ -123,7 +119,6 @@ public class AppointmentDAO {
 
     /**
      * Inserts a new appointment into the database with detailed information including title, description, location, type, and timing.
-     *
      * @param Title The title of the appointment.
      * @param Description The description of the appointment.
      * @param Location The location of the appointment.
@@ -150,8 +145,9 @@ public class AppointmentDAO {
             ps.setString(2, Description);
             ps.setString(3, Location);
             ps.setString(4, Type);
-            ps.setTimestamp(5, Timestamp.valueOf(Start.toLocalDateTime()));
-            ps.setTimestamp(6, Timestamp.valueOf(End.toLocalDateTime()));
+            ps.setTimestamp(5, Timestamp.valueOf(Start.withZoneSameInstant(ZoneOffset.UTC).toLocalDateTime()));
+            ps.setTimestamp(6, Timestamp.valueOf(End.withZoneSameInstant(ZoneOffset.UTC).toLocalDateTime()));
+            System.out.println("From createAppointment() = " + Timestamp.valueOf(Start.withZoneSameInstant(ZoneOffset.UTC).toLocalDateTime()));
             ps.setInt(7, Customer_ID);
             ps.setInt(8, User_ID);
             ps.setInt(9, Contact_ID);
@@ -171,7 +167,6 @@ public class AppointmentDAO {
 
     /**
      * Updates an existing appointment in the database with new details.
-     *
      * @param Title The new title of the appointment.
      * @param Description The new description of the appointment.
      * @param Location The new location of the appointment.
@@ -212,7 +207,6 @@ public class AppointmentDAO {
 
     /**
      * Deletes an appointment from the database based on the provided appointment ID.
-     *
      * @param Appointment_ID The ID of the appointment to be deleted.
      * @throws SQLException if there is an error executing the deletion query.
      */
@@ -234,7 +228,6 @@ public class AppointmentDAO {
 
     /**
      * Fetches appointments from the database within a specified date range.
-     *
      * @param start The start date to filter the appointments.
      * @param end The end date to filter the appointments.
      * @return an ObservableList of appointments within the specified date range.
@@ -284,7 +277,6 @@ public class AppointmentDAO {
     /**
      * Fetches the nearest upcoming appointment for a user based on the current time adjusted to UTC and considering a 15-minute window.
      * The user's time zone is used to adjust the appointment time to the local time zone for display.
-     *
      * @param userTimeZone The time zone to adjust the appointment times to.
      * @return The next upcoming appointment if it exists within 15 minutes of the current UTC time; otherwise, null.
      * @throws SQLException If there is a database access error.
@@ -296,7 +288,6 @@ public class AppointmentDAO {
     /**
      * Queries the database for the next upcoming appointment within a 15-minute window from now, using UTC times for comparison.
      * Converts fetched UTC appointment times to the user's local time zone for accurate display and evaluation.
-     *
      * @param userTimeZone The user's local time zone for correct time display.
      * @return An upcoming appointment if available within the next 15 minutes, otherwise null.
      * @throws SQLException If there is a database access error or the query fails to execute.
@@ -333,7 +324,6 @@ public class AppointmentDAO {
     /**
      * Retrieves the user ID associated with a given username from the database.
      * This method is crucial for operations requiring user identification beyond just username checks, such as logging and user-specific data retrieval.
-     *
      * @param userName The username whose user ID is being queried.
      * @return The user ID corresponding to the provided username or -1 if the user does not exist or an error occurs.
      * @throws SQLException If there is an error during the database access.
@@ -365,7 +355,6 @@ public class AppointmentDAO {
     /**
      * Retrieves all appointments associated with a specific contact from the database.
      * This method is used to filter appointments by contact, which is useful for displaying user-specific appointment data.
-     *
      * @param contact The contact whose appointments are to be fetched.
      * @return An ObservableList containing all appointments linked to the specified contact.
      * @throws SQLException If there is a database access error.
@@ -406,7 +395,6 @@ public class AppointmentDAO {
     /**
      * Counts the number of appointments of a specified type occurring in a specific month.
      * This method is useful for generating statistics and reports on appointment data.
-     *
      * @param type The type of appointments to count.
      * @param month The month for which to count appointments.
      * @return The number of appointments matching the specified type and month.
@@ -435,7 +423,6 @@ public class AppointmentDAO {
     /**
      * Retrieves a distinct list of all appointment types from the database.
      * This method is typically used to populate type selection controls or for filtering purposes.
-     *
      * @return An ObservableList containing the distinct types of appointments.
      * @throws SQLException If there is an error during database access.
      */
@@ -459,7 +446,6 @@ public class AppointmentDAO {
     /**
      * Counts all appointments scheduled for the next day from the current date.
      * This method can be used to prepare or alert users about upcoming appointments.
-     *
      * @return The total number of appointments scheduled for the next day.
      * @throws SQLException If there is an error executing the count query.
      */
@@ -482,7 +468,6 @@ public class AppointmentDAO {
 
     /**
      * Deletes all appointments associated with a given customer from the database.
-     *
      * @param customerID The ID of the customer whose appointments are to be deleted.
      * @throws SQLException If a database access error occurs or the delete operation fails.
      */

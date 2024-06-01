@@ -19,7 +19,6 @@ public class LoginTracker {
      * Logs a single login attempt to the log file. The method records the timestamp, username, and
      * the result of the login attempt. It appends this information to {@code login_activity.txt},
      * creating the file if it does not already exist.
-     *
      * @param username The username of the account that attempted to log in.
      * @param isSuccess A boolean indicating whether the login attempt was successful.
      */

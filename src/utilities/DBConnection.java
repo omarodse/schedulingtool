@@ -6,7 +6,6 @@ import java.sql.SQLException;
 
 /**
  * Manages the connection to the database.
- * <p>
  * This class provides methods for connecting, return the connection to the database, and
  * disconnect from the DB.
  */
@@ -15,7 +14,7 @@ public abstract class DBConnection {
     private static final String vendor = ":mysql:";
     private static final String location = "//localhost/";
     private static final String databaseName = "client_schedule";
-    private static final String jdbcUrl = protocol + vendor + location + databaseName + "?connectionTimeZone = SERVER"; // LOCAL
+    private static final String jdbcUrl = protocol + vendor + location + databaseName;
     private static final String driver = "com.mysql.cj.jdbc.Driver"; // Driver reference
     private static final String userName = "sqlUser"; // Username
     private static String password = "Passw0rd!"; // Password
@@ -24,7 +23,6 @@ public abstract class DBConnection {
 
     /**
      * Establish the connection to the database.
-     *<p>
      * @return The current connection.
      */
     public static Connection openConnection()
@@ -44,7 +42,6 @@ public abstract class DBConnection {
 
     /**
      * Gets the current connection.
-     *<p>
      * @return The current connection.
      */
     public static Connection getConnection() throws SQLException {
@@ -56,7 +53,6 @@ public abstract class DBConnection {
 
     /**
      * Closes the connection to the database.
-     *
      */
     public static void closeConnection() {
         try {

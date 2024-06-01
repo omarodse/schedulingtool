@@ -17,10 +17,8 @@ import static utilities.ManageState.*;
 
 /**
  * Main class that launches the scheduling desktop application.
- * <p>
  * This class is responsible for initializing and displaying the primary stage and scene,
  * serving as the entry point for the JavaFX application.
- *<p>
  */
 public class Main extends Application {
 
@@ -34,7 +32,6 @@ public class Main extends Application {
 
     /**
      * Starts the primary stage for this application.
-     * <p>
      * This method loads the main application scene from an FXML file and sets it on the primary stage.
      *
      */
@@ -59,9 +56,7 @@ public class Main extends Application {
 
     /**
      * The main() method is ignored in correctly deployed JavaFX application.
-     * <p>
      * @param args the command line arguments
-     * <p>
      */
     public static void main(String[] args) {
         DBConnection.openConnection();

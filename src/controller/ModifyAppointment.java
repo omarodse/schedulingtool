@@ -23,7 +23,6 @@ import static utilities.ManageState.*;
  * Controller class for the Modify Appointment screen of the application. This class handles
  * the user interface where users can edit details of existing appointments. It provides text fields,
  * date pickers, and combo boxes for user input and allows saving or canceling changes.
- *
  * Implements both Initializable for basic initialization upon loading and InitializableWithData
  * for dynamic data-driven initialization, allowing the form to be pre-populated with existing appointment details.
  */
@@ -54,10 +53,8 @@ public class ModifyAppointment implements Initializable, InitializableWithData {
      * Initializes the controller by setting up UI components specific to appointment management.
      * This method configures date pickers and populates combo boxes with appropriate time options and entity identifiers
      * such as contacts, user IDs, and customer IDs to facilitate the scheduling or editing of appointments.
-     *
      * The method leverages Java streams to generate time options in a 24-hour format for both hours and minutes,
      * ensuring that time selection is intuitive and efficient.
-     *
      * @param url The location used to resolve relative paths for the root object, or {@code null} if the location is not known.
      * @param resourceBundle The resources used to localize the root object, providing localized strings for UI components.
      */
@@ -99,7 +96,6 @@ public class ModifyAppointment implements Initializable, InitializableWithData {
      * Initializes the controller with specific appointment data for editing. This method is called to populate the form
      * fields with existing appointment details when an appointment is selected for modification. It handles the conversion
      * of UTC dates and times to the system's default time zone to ensure the user interface reflects the local time.
-     *
      * @param data The appointment data passed to the controller, expected to be an instance of Appointment.
      *             This data is used to pre-populate the form fields with existing values, allowing for easier editing.
      */
@@ -140,7 +136,6 @@ public class ModifyAppointment implements Initializable, InitializableWithData {
     /**
      * Handles the action triggered by clicking the 'Cancel' button. This method returns the user
      * to the appointments overview screen without making any changes to the data.
-     *
      * @param actionEvent The event that triggered this action, typically the clicking of the 'Cancel' button.
      */
     public void onCancelButton(ActionEvent actionEvent) {
@@ -152,7 +147,6 @@ public class ModifyAppointment implements Initializable, InitializableWithData {
      * Handles the action triggered by clicking the 'Save' button. This method validates the form fields
      * and updates the appointment data if validation is successful. It also handles conversion of date
      * and time data from local time zone to UTC for consistent storage.
-     *
      * If validation fails, the method will abort the saving process and potentially alert the user
      * to the validation issues.
      *
@@ -197,10 +191,8 @@ public class ModifyAppointment implements Initializable, InitializableWithData {
     /**
      * Validates the input fields within the form to ensure that no required fields are empty and that
      * all entered data adheres to logical constraints (e.g., end time is after start time).
-     *
      * This method checks for empty fields and validates time consistency between start and end times,
      * providing user feedback through alerts if invalid data is found.
-     *
      * @return boolean Returns true if all fields are valid, otherwise false if any validation check fails.
      */
     private boolean areFieldsValid() {

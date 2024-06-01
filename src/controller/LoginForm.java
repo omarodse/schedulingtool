@@ -22,7 +22,6 @@ import static utilities.ManageState.getRB;
 
 /**
  * Controller for the Login Form UI.
- * <p>
  * This class handles the user interactions with the Login Form, allowing users
  * to sign in to the scheduling too application.
  */
@@ -40,7 +39,6 @@ public class LoginForm implements Initializable {
      * Initializes the login form controller. This method sets up the UI components with default values
      * and localizations from the resource bundle. It also sets the system's default time zone as text for
      * the location label to indicate the current time zone to the user.
-     *
      * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
      * @param rb The resource bundle used to localize the root object. It provides localized strings for UI components like labels and buttons.
      */
@@ -59,7 +57,6 @@ public class LoginForm implements Initializable {
      * Handles the login button action. This method validates the user credentials and processes the login attempt.
      * If successful, it logs the attempt, hides the error message, and loads the main application screen,
      * potentially passing any relevant data like upcoming appointments. If unsuccessful, it displays an error message.
-     *
      * @param actionEvent The event that triggered this method, generally the clicking of the login button.
      * @throws SQLException If there's an error during the database access required for user validation.
      * @throws IOException If there's an error loading the next scene or related resources.

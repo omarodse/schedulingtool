@@ -11,7 +11,6 @@ public class Contact {
 
     /**
      * Constructs a new Contact instance with specified details.
-     *
      * @param contactID The unique identifier of the contact.
      * @param contactName The name of the contact.
      */
@@ -22,7 +21,6 @@ public class Contact {
 
     /**
      * Returns the unique identifier of this contact.
-     *
      * @return the contact ID.
      */
     public int getContactID() {
@@ -32,7 +30,6 @@ public class Contact {
     /**
      * Returns a string representation of this contact, which is the contact's name.
      * This is particularly useful when displaying the contact in UI components.
-     *
      * @return the contact's name.
      */
     @Override

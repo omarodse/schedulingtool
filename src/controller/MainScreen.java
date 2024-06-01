@@ -25,7 +25,6 @@ import static utilities.ManageState.*;
  * within the primary user interface. This class initializes and handles user interactions with
  * various components such as buttons, tables, and combo boxes to manage customers, appointments,
  * and other functionalities.
- *
  * Implements both Initializable for basic initialization upon loading and InitializableWithData
  * for dynamic data-driven initialization.
  */
@@ -56,7 +55,6 @@ public class MainScreen implements Initializable, InitializableWithData {
     /**
      * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
      * It sets up the components with necessary data and behaviors such as filling combo boxes and setting up table columns.
-     *
      * @param url The location used to resolve relative paths for the root object, or {@code null} if unknown.
      * @param resourceBundle The resources used to localize the root object, or {@code null} if not localized.
      */
@@ -106,7 +104,6 @@ public class MainScreen implements Initializable, InitializableWithData {
     /**
      * Initializes the controller with dynamic data when required. This method allows for the flexible
      * initialization of the controller's state based on data passed at runtime.
-     *
      * @param data The data object used for initialization, which can vary depending on the specific use case.
      */
     @Override
@@ -125,7 +122,6 @@ public class MainScreen implements Initializable, InitializableWithData {
     /**
      * Handles the action triggered by clicking the 'Customers' button. This method changes the
      * center pane of the main border pane to the customers view, allowing the user to manage customer records.
-     *
      * @param actionEvent The event that triggered this action.
      */
     public void onCustomers(ActionEvent actionEvent) {
@@ -138,7 +134,6 @@ public class MainScreen implements Initializable, InitializableWithData {
     /**
      * Handles the action triggered by clicking the 'Overview' button. This method changes the
      * center pane of the main border pane to the overview view.
-     *
      * @param actionEvent The event that triggered this action.
      */
     public void onOverview(ActionEvent actionEvent) {
@@ -151,7 +146,6 @@ public class MainScreen implements Initializable, InitializableWithData {
     /**
      * Handles the action triggered by clicking the 'Appointment' button. This method changes the
      * center pane of the main border pane to the appointments view, allowing the user to manage appointment records.
-     *
      * @param actionEvent The event that triggered this action.
      */
     public void onAppointments(ActionEvent actionEvent) {
@@ -165,7 +159,6 @@ public class MainScreen implements Initializable, InitializableWithData {
      * Handles the action triggered by selecting an item in the contact combo box. This method updates the appointments table
      * to show appointments related to the selected contact. It ensures that only the appointments linked to the selected
      * contact are displayed in the appointments table.
-     *
      * @param actionEvent The event that triggered this action, typically from a user interaction with the contactComboBox.
      */
     public void onContactCombo(ActionEvent actionEvent) {
@@ -180,7 +173,6 @@ public class MainScreen implements Initializable, InitializableWithData {
      * This method sets the appearance of other navigation buttons to a less highlighted state and loads
      * the form to add a new appointment into the central panel of the main application window. It ensures
      * the user interface is responsive and intuitive during the transition between views.
-     *
      * @param mouseEvent The mouse event that triggered this method, typically the clicking of the 'Add' button.
      */
     public void onAddButton(MouseEvent mouseEvent) {

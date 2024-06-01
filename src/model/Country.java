@@ -10,7 +10,6 @@ public class Country {
 
     /**
      * Constructs a new Country instance with specified details.
-     *
      * @param countryID The unique identifier of the country.
      * @param countryName The name of the country.
      */
@@ -21,7 +20,6 @@ public class Country {
 
     /**
      * Returns the unique identifier of this country.
-     *
      * @return the country ID.
      */
     public int getCountryID() {
@@ -30,7 +28,6 @@ public class Country {
 
     /**
      * Returns the name of this country.
-     *
      * @return the country's name.
      */
     public String getCountryName() {
@@ -41,7 +38,6 @@ public class Country {
      * Returns a string representation of this country, combining the country ID and name.
      * This format is useful for identifying both the numeric ID and the descriptive name of the country,
      * especially in user interface components where a clear representation is beneficial.
-     *
      * @return a string representation of the country in the format "[ID] Name".
      */
     @Override

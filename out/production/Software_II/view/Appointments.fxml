@@ -93,7 +93,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
                         <Pane prefHeight="30.0" prefWidth="345.0" HBox.hgrow="ALWAYS" />
-                        <TabPane fx:id="tabPane" focusTraversable="false" prefHeight="30.0" prefWidth="199.0" side="BOTTOM" stylesheets="@../resources/styless.css" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+                        <TabPane fx:id="tabPane" focusTraversable="false" prefHeight="30.0" prefWidth="199.0" side="BOTTOM" stylesheets="@../resources/styless.css" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab fx:id="monthView" style="-fx-cursor: hand;" text="This Month">
                               <content>
@@ -111,6 +111,9 @@
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" top="30.0" />
                      </VBox.margin>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
                   </HBox>
                   <TableView fx:id="appointmentsTable" prefWidth="800.0" style="-fx-border-style: solid; -fx-border-color: #ededed; -fx-border-width: 0.2;" stylesheets="@../resources/styless.css" VBox.vgrow="ALWAYS">
                     <columns>

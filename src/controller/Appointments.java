@@ -17,6 +17,7 @@ import model.Appointment;
 import java.net.URL;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ResourceBundle;
 
@@ -25,7 +26,6 @@ import static utilities.ManageState.*;
 
 /**
  * Controller for the Appointment GUI of the application.
- * <p>
  * This class is responsible for handling all user interactions on the Appointment GUI,
  * including initializing its Appointment tableView. The TableView contains a column which has
  * a three dot button that was added programmatically to the table.
@@ -103,8 +103,10 @@ public class Appointments implements Initializable {
                     setText(null);
                 } else {
                     // Convert UTC LocalDateTime to local time zone
+                    //System.out.println("UTC start time: " + item);
                     ZonedDateTime zdt = item.atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.systemDefault());
-                    setText(zdt.toLocalDateTime().toString()); // Default LocalDateTime toString format
+                    setText(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).format(zdt));
+                    //System.out.println("UTC to local time: " + zdt.toLocalDateTime().toString());
                 }
             }
         });
@@ -118,8 +120,7 @@ public class Appointments implements Initializable {
                     setText(null);
                 } else {
                     ZonedDateTime zdt = item.atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.systemDefault());
-                    setText(zdt.toLocalDateTime().toString()); // Default LocalDateTime toString format
-                }
+                    setText(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).format(zdt));                }
             }
         });
 
@@ -146,7 +147,6 @@ public class Appointments implements Initializable {
      * Updates the content of the appointments table based on the currently selected tab in the tab pane.
      * This method determines which data set to load (either week or month view) by checking the currently selected tab
      * and then calling the appropriate method to load data for that specific time frame.
-     *
      * @param referenceDate The date used as the starting point to determine the data range for loading appointments.
      *                      This date is typically the current date or a selected date from a calendar UI component.
      */
@@ -165,7 +165,6 @@ public class Appointments implements Initializable {
      * Loads and displays appointments for a given week into the appointments table.
      * This method calculates the start and end of the week based on the provided reference date,
      * fetches appointments for this period, and then updates the table view to reflect this data.
-     *
      * @param referenceDate The date from which the week's start (Monday) and end (Sunday) are calculated.
      *                      The reference date is adjusted to the previous or the same Monday, ensuring the week
      *                      starts from Monday regardless of the given date.
@@ -181,7 +180,6 @@ public class Appointments implements Initializable {
      * Loads and displays appointments for the entire month based on a given reference date into the appointments table.
      * This method identifies the start and end of the month using the provided reference date, retrieves the appointments
      * for this time frame, and updates the table view to display these appointments.
-     *
      * @param referenceDate The date used to determine the month for which appointments will be loaded. This date
      *                      helps in calculating the first and last day of the month.
      */
@@ -197,7 +195,6 @@ public class Appointments implements Initializable {
      * Configures the options column in the appointments table by setting a custom cell factory.
      * Each cell in this column contains a button equipped with an icon, which when clicked,
      * triggers a context menu or a similar action related to the specific appointment in that row.
-     *
      * The lambda allows for direct access to the button's event without additional code, enabling
      * the setup of the event handler inline where the button is instantiated. This usage enhances readability
      * and reduces the complexity of the event handling setup.
@@ -239,10 +236,9 @@ public class Appointments implements Initializable {
 
     /**
      * Displays a context menu for each appointment with options to edit or delete the appointment.
-     * The menu is shown when the user interacts with the button in the options column.
-     *
+     * The menu is shown when the user interacts with the button in the Options column.
      * @param appointment The appointment associated with the particular table row, providing the context for actions.
-     * @param button The button tied to each table cell in the options column, used as an anchor for displaying the context menu.
+     * @param button The button tied to each table cell in the Options column, used as an anchor for displaying the context menu.
      */
     private void showOptionsMenu(Appointment appointment, Button button) {
         ContextMenu contextMenu = new ContextMenu();
@@ -262,7 +258,6 @@ public class Appointments implements Initializable {
      * Initiates the editing process for a given appointment. This method checks if the appointment
      * is in the past, and if so, it prevents editing by displaying an alert. If the appointment is
      * valid for editing, it loads the modification view into the main application area.
-     *
      * @param appointment The appointment to be edited, containing all relevant details.
      */
     private void editAppointment(Appointment appointment) {
@@ -284,7 +279,6 @@ public class Appointments implements Initializable {
      * Cancels an appointment in the database and provides feedback to the user.
      * This method presents a confirmation dialog, and if confirmed, it proceeds to delete
      * the appointment from the DB and then shows a custom message with the appointment details.
-     *
      * @param appointment The appointment to be canceled.
      */
     private void deleteAppointment(Appointment appointment) {
@@ -310,7 +304,6 @@ public class Appointments implements Initializable {
     /**
      * Handles the action triggered by clicking the 'Add Appointment' button. This method sets the center of the main border pane
      * to the form for adding a new appointment, allowing users to input details for a new appointment.
-     *
      * @param actionEvent The event that triggered this action, typically a button click.
      */
     public void onAddAppointmentButton(ActionEvent actionEvent) {
@@ -322,7 +315,6 @@ public class Appointments implements Initializable {
      * Validates that both month and type have been selected before proceeding. If either is not selected,
      * it displays a validation error. If valid, it fetches and displays the count of appointments for the selected
      * criteria.
-     *
      * @param actionEvent The event triggered by clicking the fetch button.
      */
     public void onFetchButton(ActionEvent actionEvent) {

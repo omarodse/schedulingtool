@@ -13,7 +13,6 @@ public class User {
     /**
      * Constructs a new User instance with specified details. Note that the password
      * should ideally be a hashed value to ensure security.
-     *
      * @param userID The unique identifier of the user.
      * @param userName The username of the user.
      * @param password The hashed password of the user.
@@ -26,7 +25,6 @@ public class User {
 
     /**
      * Returns the unique identifier of this user.
-     *
      * @return the user ID.
      */
     public int getUserID() {
@@ -35,7 +33,6 @@ public class User {
 
     /**
      * Returns the username of this user.
-     *
      * @return the username.
      */
     public String getUserName() {
@@ -45,7 +42,6 @@ public class User {
     /**
      * Returns the password of this user. This should be treated with a high
      * level of security and never exposed publicly.
-     *
      * @return the password.
      */
     public int getPassword() {

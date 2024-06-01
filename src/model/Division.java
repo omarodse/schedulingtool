@@ -25,7 +25,6 @@ public class Division {
 
     /**
      * Returns the unique identifier of this division.
-     *
      * @return the division ID.
      */
     public int getDivisionID() {
@@ -34,7 +33,6 @@ public class Division {
 
     /**
      * Returns the name of this division.
-     *
      * @return the division's name.
      */
     public String getDivision() {
@@ -43,7 +41,6 @@ public class Division {
 
     /**
      * Returns the identifier for the country to which this division belongs.
-     *
      * @return the country ID.
      */
     public int getCountryID() {
@@ -52,7 +49,6 @@ public class Division {
 
     /**
      * Returns a string representation of this division, typically for display in user interfaces.
-     *
      * @return a string representation of the division, including its ID and name.
      */
     @Override

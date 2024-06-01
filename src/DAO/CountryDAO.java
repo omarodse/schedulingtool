@@ -22,7 +22,6 @@ public class CountryDAO {
      * Retrieves all countries from the database and returns them as an ObservableList.
      * Each country's ID and name are fetched from the database, and these details are used
      * to create Country objects which are then accumulated into an ObservableList.
-     *
      * @return an ObservableList of Country objects containing details of all countries
      *         from the database. If an SQL exception occurs during the operation,
      *         the method prints the stack trace and returns an empty list.

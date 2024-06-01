@@ -21,7 +21,6 @@ public class UserDAO {
      * Attempts to authenticate a user based on the provided username and password.
      * The method checks the database for a matching username and compares the stored
      * password with the provided one.
-     *
      * @param userName The username provided by the user.
      * @param password The password provided by the user.
      * @return A boolean indicating whether the authentication was successful. Returns
@@ -53,7 +52,6 @@ public class UserDAO {
      * Retrieves a list of all user IDs from the database. This method queries the users
      * table to collect all existing user IDs and returns them in an ObservableList.
      * This list can be used for user management tasks where a complete list of users is required.
-     *
      * @return An ObservableList containing integers, each representing a unique user ID
      * from the database.
      */

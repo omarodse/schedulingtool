@@ -21,7 +21,6 @@ public class CustomerDAO {
     /**
      * Inserts a new customer into the database. The method constructs an SQL statement to insert
      * customer details and executes it using a PreparedStatement to protect against SQL injection.
-     *
      * @param Customer_Name The name of the customer.
      * @param Address The address of the customer.
      * @param Postal_Code The postal code of the customer's address.
@@ -60,7 +59,6 @@ public class CustomerDAO {
      * Updates an existing customer's data in the database based on the customer ID. The method
      * allows modification of all customer details except for the customer ID, which is used to
      * uniquely identify the record to update.
-     *
      * @param Customer_Name The new name of the customer.
      * @param Address The new address of the customer.
      * @param Postal_Code The new postal code of the customer's address.
@@ -91,7 +89,6 @@ public class CustomerDAO {
 
     /**
      * Deletes a customer from the database using the customer ID as a key.
-     *
      * @param Customer_ID The ID of the customer to delete.
      */
     public static void deleteCustomerFromDB(int Customer_ID) {
@@ -114,7 +111,6 @@ public class CustomerDAO {
      * Retrieves a list of all customers from the database. This method queries the database
      * for all records in the customers table, constructs Customer objects for each, and
      * returns them in an ObservableList.
-     *
      * @return An ObservableList containing Customer objects representing all customers
      * in the database.
      */
@@ -150,7 +146,6 @@ public class CustomerDAO {
     /**
      * Fetches a list of all customer IDs from the database. This method is useful for
      * populating UI elements that require a list of customer IDs, or for validation purposes.
-     *
      * @return An ObservableList containing Integer objects, each representing a unique
      * customer ID from the database.
      */

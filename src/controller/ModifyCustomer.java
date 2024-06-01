@@ -24,7 +24,6 @@ import static utilities.ManageState.*;
 
 /**
  * Controller for the Modify Customer GUI of the application.
- * <p>
  * This class is responsible for handling all user interactions on the Modify Customer GUI,
  * including populating the distinct combo boxes, and validating all inputs.
  */
@@ -50,7 +49,6 @@ public class ModifyCustomer implements Initializable, InitializableWithData {
      * Initializes the controller by setting up the country and division combo boxes. It also sets up a listener
      * on the country combo box to update the division combo box based on the selected country. This method ensures
      * that the UI is correctly populated and responsive to user input, facilitating the modification of customer data.
-     *
      * @param url The location used to resolve relative paths for the root object, or {@code null} if the location is not known.
      * @param resourceBundle The resources used to localize the root object, providing localized strings for UI components.
      */
@@ -83,7 +81,6 @@ public class ModifyCustomer implements Initializable, InitializableWithData {
     /**
      * Handles the click event of the combo box for countries, and it populates the correspondent
      * divisions(cities/provinces) per country.
-     * <p>
      * @param actionEvent The event triggered when the country combo box is clicked.
      */
     public void onCountryCombo(ActionEvent actionEvent) {
@@ -96,7 +93,6 @@ public class ModifyCustomer implements Initializable, InitializableWithData {
     /**
      * Handles the click event of the cancel button, it cancels the action of editing a Customer,
      * and it navigates back to the customer list.
-     * <p>
      * @param actionEvent The event triggered when the cancel button is pressed.
      */
     public void onCancelButton(ActionEvent actionEvent) {
@@ -107,7 +103,6 @@ public class ModifyCustomer implements Initializable, InitializableWithData {
      * This method validates the selected division and country for consistency, then saves the updated customer
      * data to the database if all fields are properly filled and validation checks pass. It also handles navigation
      * back to the customer overview screen upon successful data submission.
-     *
      * @param actionEvent The event that triggered this action, typically the clicking of the 'Save' button.
      */
     public void onSaveButton(ActionEvent actionEvent) {
@@ -143,7 +138,6 @@ public class ModifyCustomer implements Initializable, InitializableWithData {
     /**
      * Initializes the form fields with existing customer data when an instance of Customer is passed. This method
      * is responsible for populating the fields with data from the customer object, ensuring the form is ready for editing.
-     *
      * @param data The customer data to be loaded into the form fields. This should be an instance of Customer.
      */
     public void initializeData(Object data) {
