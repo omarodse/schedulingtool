@@ -105,8 +105,6 @@ public class AppointmentDAO {
                 int userID = rs.getInt("User_ID");
                 int contactID = rs.getInt("Contact_ID");
 
-                System.out.println("startDate from get allAppointments method = " + startDate);
-
                 Appointment appointment = new Appointment(appointmentID, title, description, location, type, startDate, endDate, customerID, userID, contactID);
                 appointmentList.add(appointment);
             }
@@ -395,31 +393,35 @@ public class AppointmentDAO {
     /**
      * Counts the number of appointments of a specified type occurring in a specific month.
      * This method is useful for generating statistics and reports on appointment data.
-     * @param type The type of appointments to count.
      * @param month The month for which to count appointments.
      * @return The number of appointments matching the specified type and month.
      * @throws SQLException If there is an error executing the count query.
      */
-    public static int countAppointmentsByTypeAndMonth(String type, int month) {
-        String query = "SELECT COUNT(*) AS total FROM appointments WHERE type = ? AND MONTH(Start) = ?";
-        int count = 0;
+    public static ObservableList<Appointment> countAppointmentsByTypeForMonth(int month) {
+        ObservableList<Appointment> summaryList = FXCollections.observableArrayList();
+        String query = "SELECT type, COUNT(*) AS total " +
+                       "FROM appointments " +
+                       "WHERE MONTH(Start) = ? " +
+                       "GROUP BY type";
 
         try{
             PreparedStatement ps = getConnection().prepareStatement(query);
+            ps.setInt(1, month);
 
-            ps.setString(1, type);
-            ps.setInt(2, month);
-
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                count = rs.getInt("total");
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    String type = rs.getString("type");
+                    int total = rs.getInt("total");
+                    System.out.println(type);
+                    System.out.println(total);
+                    summaryList.add(new Appointment(type, total));
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return count;
+        return summaryList;
     }
-
     /**
      * Retrieves a distinct list of all appointment types from the database.
      * This method is typically used to populate type selection controls or for filtering purposes.

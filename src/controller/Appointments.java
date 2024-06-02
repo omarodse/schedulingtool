@@ -53,9 +53,11 @@ public class Appointments implements Initializable {
     public Tab monthView;
     public Label monthYear;
     public ComboBox<Integer> monthComboBox;
-    public ComboBox<String> typeComboBox;
     public Button fetchButton;
     public Label numberOfAppointments;
+    public TableView monthTypeTable;
+    public TableColumn filterType;
+    public TableColumn filterTotal;
     @FXML
     private BorderPane mainBorderPane = getMainBorderPane();
     private final ResourceBundle rb = getRB();
@@ -84,7 +86,6 @@ public class Appointments implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadMonthNumbers();
-        typeComboBox.setItems(fetchAppointmentTypes());
         appointmentsTable.setItems(getAllAppointments());
 
         appointmentID.setCellValueFactory(new PropertyValueFactory<>("appointmentID"));
@@ -102,11 +103,8 @@ public class Appointments implements Initializable {
                 if (item == null || empty) {
                     setText(null);
                 } else {
-                    // Convert UTC LocalDateTime to local time zone
-                    //System.out.println("UTC start time: " + item);
                     ZonedDateTime zdt = item.atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.systemDefault());
                     setText(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).format(zdt));
-                    //System.out.println("UTC to local time: " + zdt.toLocalDateTime().toString());
                 }
             }
         });
@@ -311,25 +309,26 @@ public class Appointments implements Initializable {
     }
 
     /**
-     * Handles the fetch action on a UI button to retrieve the number of appointments based on selected month and type.
-     * Validates that both month and type have been selected before proceeding. If either is not selected,
+     * Handles the fetch action on a UI button to retrieve the number of appointment types based on selected month.
+     * Validates that the month was selected before proceeding. If is not selected,
      * it displays a validation error. If valid, it fetches and displays the count of appointments for the selected
      * criteria.
      * @param actionEvent The event triggered by clicking the fetch button.
      */
     public void onFetchButton(ActionEvent actionEvent) {
-        // Validate that both month and type selections are made
-        if (monthComboBox.getSelectionModel().getSelectedItem() == null || typeComboBox.getSelectionModel().getSelectedItem() == null) {
-            showAlert("Validation Error", "Both fields are required.");
+        // Validate that the month selection is made
+        if (monthComboBox.getSelectionModel().getSelectedItem() == null) {
+            showAlert("Validation Error", "Please select a month.");
             return;
         }
 
         // Retrieve selections from combo boxes
         int month = monthComboBox.getValue();
-        String type = typeComboBox.getValue();
 
-        // Fetch and display the number of appointments based on the type and month
-        numberOfAppointments.setText(String.valueOf(countAppointmentsByTypeAndMonth(type, month)));
+        // Fetch and display the number of appointments based on the month
+        monthTypeTable.setItems(countAppointmentsByTypeForMonth(month));
+        filterType.setCellValueFactory(new PropertyValueFactory<>("type"));
+        filterTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
     }
 
     /**
